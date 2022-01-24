@@ -36,6 +36,11 @@ a {
   margin: 0 auto;
 }
 
+.header {
+  margin: 1rem 0;
+  text-align: center;
+}
+
 .logo {
   font-family: 'Permanent Marker', cursive;
   font-size: 4rem;
