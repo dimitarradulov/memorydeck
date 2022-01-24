@@ -26,6 +26,7 @@ body {
 }
 
 a {
+  display: inline-block;
   text-decoration: none;
   color: inherit;
 }
@@ -45,4 +46,5 @@ a {
   font-family: 'Permanent Marker', cursive;
   font-size: 4rem;
   letter-spacing: 2px;
+  margin-bottom: 1rem;
 }
