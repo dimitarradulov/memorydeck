@@ -92,15 +92,16 @@ a {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Style the front side  */
 .cards__flip-card-inner--front {
   background-color: var(--off-black);
   color: var(--lighter-gray);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Style the back side (fallback if image is missing) */
@@ -108,4 +109,9 @@ a {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
+}
+
+.animal {
+  width: 50%;
+  height: auto;
 }
