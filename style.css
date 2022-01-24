@@ -20,5 +20,5 @@ body {
   font-family: 'Varela', sans-serif;
   box-sizing: border-box;
   line-height: 1.2;
-  background-color: #f2f7f5;
+  background-color: var(--gray);
 }
