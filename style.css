@@ -30,12 +30,13 @@ a {
   color: inherit;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.container {
+  max-width: 960px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.logo {
   font-family: 'Permanent Marker', cursive;
   font-size: 4rem;
   letter-spacing: 2px;
