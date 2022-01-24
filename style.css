@@ -19,6 +19,7 @@ html {
 body {
   font-family: 'Varela', sans-serif;
   font-size: 1.6rem;
+  color: var(--off-black);
   box-sizing: border-box;
   line-height: 1.2;
   background-color: var(--gray);
