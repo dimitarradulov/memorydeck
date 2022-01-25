@@ -115,3 +115,13 @@ a {
   width: 50%;
   height: auto;
 }
+
+.score {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
