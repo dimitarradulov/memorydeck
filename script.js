@@ -6,6 +6,9 @@ const cardsBackSide = document.querySelectorAll(
 );
 const bestScoreEl = document.querySelector('.best-score__number');
 const movesEl = document.querySelector('.moves__number');
+const modal = document.querySelector('#modal');
+const modalClose = document.querySelector('#close-modal');
+const modalContentText = document.querySelector('.modal__content p');
 
 const arrOfAnimalImgs = [
   '<img src="img/1.svg" class="animal" alt="Animal Image" data-animal="giraffe" />',
@@ -31,15 +34,41 @@ const shuffleArray = (array) => {
   }
 };
 
-shuffleArray(arrOfAnimalImgs);
-
 const addImagesToCardsBackSide = () => {
   cardsBackSide.forEach((card, i) => {
     card.insertAdjacentHTML('afterbegin', arrOfAnimalImgs[i]);
   });
 };
 
-addImagesToCardsBackSide();
+const initCards = () => {
+  shuffleArray(arrOfAnimalImgs);
+  addImagesToCardsBackSide();
+};
+
+initCards();
+
+const isCardsNotVisible = (cards) => {
+  let hidden = true;
+
+  cards.forEach((card) => {
+    if (!card.classList.contains('v-hidden')) hidden = false;
+  });
+
+  return hidden;
+};
+
+const refreshPage = () => {
+  window.location.reload();
+};
+
+const showModal = () => {
+  modalContentText.textContent = `You have beaten the game with ${movesNum} moves!`;
+  modal.classList.remove('d-none');
+};
+
+const hideModal = () => {
+  modal.classList.add('d-none');
+};
 
 // Events
 cards.addEventListener('click', (e) => {
@@ -68,6 +97,7 @@ cards.addEventListener('click', (e) => {
   if (cardBackSideImg1.dataset.animal !== cardBackSideImg2.dataset.animal) {
     const card1 = cardBackSideImg1.closest('.cards__flip-card-inner');
     const card2 = cardBackSideImg2.closest('.cards__flip-card-inner');
+
     setTimeout(() => {
       card1.classList.remove('cards-transform');
       card2.classList.remove('cards-transform');
@@ -75,9 +105,24 @@ cards.addEventListener('click', (e) => {
   } else {
     const card1 = cardBackSideImg1.closest('.cards__flip-card');
     const card2 = cardBackSideImg2.closest('.cards__flip-card');
+
     setTimeout(() => {
-      card1.classList.add('hidden');
-      card2.classList.add('hidden');
-    }, 2000);
+      card1.classList.add('v-hidden');
+      card2.classList.add('v-hidden');
+      isCardsNotVisible(document.querySelectorAll('.cards__flip-card')) &&
+        showModal();
+    }, 1200);
+  }
+});
+
+modalClose.addEventListener('click', (e) => {
+  hideModal();
+  refreshPage();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+    hideModal();
+    refreshPage();
   }
 });
