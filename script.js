@@ -59,12 +59,18 @@ cards.addEventListener('click', (e) => {
   const cardBackSideImg2 = cardInner.querySelector('.animal');
 
   if (cardBackSideImg1.dataset.animal !== cardBackSideImg2.dataset.animal) {
-    console.log('dasd');
     const card1 = cardBackSideImg1.closest('.cards__flip-card-inner');
     const card2 = cardBackSideImg2.closest('.cards__flip-card-inner');
     setTimeout(() => {
       card1.classList.remove('cards-transform');
       card2.classList.remove('cards-transform');
     }, 1000);
+  } else {
+    const card1 = cardBackSideImg1.closest('.cards__flip-card');
+    const card2 = cardBackSideImg2.closest('.cards__flip-card');
+    setTimeout(() => {
+      card1.classList.add('hidden');
+      card2.classList.add('hidden');
+    }, 2000);
   }
 });
