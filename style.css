@@ -80,7 +80,11 @@ a {
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.cards__flip-card:hover .cards__flip-card-inner {
+/* .cards__flip-card:hover .cards__flip-card-inner {
+  transform: rotateY(180deg);
+} */
+
+.cards-transform {
   transform: rotateY(180deg);
 }
 
@@ -124,4 +128,8 @@ a {
   padding: 2rem;
   border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.hidden {
+  display: none;
 }
