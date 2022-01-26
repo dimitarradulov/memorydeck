@@ -4,6 +4,8 @@ const cards = document.querySelector('.cards');
 const cardsBackSide = document.querySelectorAll(
   '.cards__flip-card-inner--back'
 );
+const bestScoreEl = document.querySelector('.best-score__number');
+const movesEl = document.querySelector('.moves__number');
 
 const arrOfAnimalImgs = [
   '<img src="img/1.svg" class="animal" alt="Animal Image" data-animal="giraffe" />',
@@ -15,7 +17,9 @@ const arrOfAnimalImgs = [
 ];
 
 let click = 0;
-let cardBackSideImg1 = '';
+let cardBackSideImg1;
+let bestScoreNum = 0;
+let movesNum = 0;
 
 // Functions
 const shuffleArray = (array) => {
@@ -53,8 +57,11 @@ cards.addEventListener('click', (e) => {
     cardBackSideImg1 = cardInner.querySelector('.animal');
     return;
   } else if (click == 2) {
+    movesNum++;
     click = 0;
   }
+
+  movesEl.textContent = movesNum;
 
   const cardBackSideImg2 = cardInner.querySelector('.animal');
 
