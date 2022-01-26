@@ -21,7 +21,6 @@ const arrOfAnimalImgs = [
 
 let click = 0;
 let cardBackSideImg1;
-let bestScoreNum = 0;
 let movesNum = 0;
 
 // Functions
@@ -40,12 +39,30 @@ const addImagesToCardsBackSide = () => {
   });
 };
 
-const initCards = () => {
-  shuffleArray(arrOfAnimalImgs);
-  addImagesToCardsBackSide();
+const setInitialBestScore = () => {
+  if (localStorage.getItem('bestScore')) {
+    bestScoreEl.textContent = localStorage.getItem('bestScore');
+  } else {
+    localStorage.setItem('initialBestScore', 0);
+    bestScoreEl.textContent = localStorage.getItem('initialBestScore');
+  }
 };
 
-initCards();
+const setBestScore = () => {
+  const bestScore = localStorage.getItem('bestScore');
+
+  if (bestScore < movesNum) return localStorage.setItem('bestScore', movesNum);
+
+  return localStorage.setItem('bestScore', movesNum);
+};
+
+const init = () => {
+  shuffleArray(arrOfAnimalImgs);
+  addImagesToCardsBackSide();
+  setInitialBestScore();
+};
+
+init();
 
 const isCardsNotVisible = (cards) => {
   let hidden = true;
@@ -68,6 +85,12 @@ const showModal = () => {
 
 const hideModal = () => {
   modal.classList.add('d-none');
+};
+
+const restartGameAndSetBestScore = () => {
+  hideModal();
+  setBestScore();
+  refreshPage();
 };
 
 // Events
@@ -115,14 +138,10 @@ cards.addEventListener('click', (e) => {
   }
 });
 
-modalClose.addEventListener('click', (e) => {
-  hideModal();
-  refreshPage();
-});
+modalClose.addEventListener('click', restartGameAndSetBestScore);
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    hideModal();
-    refreshPage();
+    restartGameAndSetBestScore();
   }
 });
