@@ -51,7 +51,7 @@ const setInitialBestScore = () => {
 const setBestScore = () => {
   const bestScore = localStorage.getItem('bestScore');
 
-  if (bestScore < movesNum) return localStorage.setItem('bestScore', movesNum);
+  if (bestScore > movesNum) return localStorage.setItem('bestScore', movesNum);
 
   return localStorage.setItem('bestScore', movesNum);
 };
