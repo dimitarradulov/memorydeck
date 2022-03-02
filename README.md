@@ -4,7 +4,7 @@ Card game in which all of the cards are laid face down and two cards are flipped
 ## Technologies Used
 - HTML
 - CSS
-- Vanilla JavaScript  
+- JavaScript  
 
 ## Quick Preview
 You can check out the app here:
